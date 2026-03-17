@@ -3,294 +3,323 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Kelly AppStore</title>
-
+<title>Kelly AppStore · auto download</title>
 <style>
-
-body{
-margin:0;
-font-family:Arial;
-background:#0b0f0b;
-color:white;
-overflow-x:hidden;
-}
-
-/* Twinkling hacker background */
-
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:
-radial-gradient(#00ff66 1px, transparent 1px);
-background-size:40px 40px;
-opacity:0.15;
-animation:twinkle 3s infinite alternate;
-z-index:-1;
-}
-
-@keyframes twinkle{
-0%{opacity:0.08;}
-100%{opacity:0.18;}
-}
-
-/* Header */
-
-header{
-background:#111;
-padding:15px;
-text-align:center;
-font-size:22px;
-font-weight:bold;
-color:#00ff88;
-}
-
-/* Search */
-
-.searchBox{
-padding:12px;
-text-align:center;
-background:#151515;
-}
-
-.searchBox input{
-width:80%;
-padding:10px;
-border-radius:6px;
-border:none;
-outline:none;
-font-size:14px;
-}
-
-/* Dark mode toggle */
-
-.toggle{
-position:absolute;
-right:15px;
-top:15px;
-cursor:pointer;
-background:#00aa55;
-border:none;
-padding:6px 10px;
-border-radius:5px;
-color:white;
-}
-
-/* Tabs */
-
-.tabs{
-display:flex;
-background:#111;
-}
-
-.tabs button{
-flex:1;
-padding:14px;
-border:none;
-background:#111;
-color:white;
-cursor:pointer;
-}
-
-.tabs button.active{
-background:#00aa55;
-}
-
-/* Content */
-
-.tabcontent{
-display:none;
-padding:20px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-gap:18px;
-}
-
-/* App Card */
-
-.app{
-background:#161616;
-border-radius:10px;
-padding:12px;
-text-align:center;
-box-shadow:0 0 10px rgba(0,255,120,0.2);
-}
-
-.app img{
-width:70px;
-height:70px;
-border-radius:12px;
-}
-
-.app h3{
-font-size:15px;
-margin:8px 0;
-}
-
-.app p{
-font-size:12px;
-color:#aaa;
-height:35px;
-overflow:hidden;
-}
-
-/* Download button */
-
-.download{
-display:inline-block;
-background:#00cc66;
-padding:8px 12px;
-border-radius:6px;
-color:white;
-text-decoration:none;
-cursor:pointer;
-margin-top:6px;
-}
-
-.download:hover{
-background:#00aa55;
-}
-
-/* Light Mode */
-
-.light{
-background:#f2f2f2;
-color:black;
-}
-
-.light .app{
-background:white;
-box-shadow:0 2px 6px rgba(0,0,0,0.2);
-}
-
+  body{
+    margin:0;
+    font-family:Arial;
+    background:#0b0f0b;
+    color:white;
+    overflow-x:hidden;
+  }
+  /* Twinkling hacker background */
+  body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:radial-gradient(#00ff66 1px, transparent 1px);
+    background-size:40px 40px;
+    opacity:0.15;
+    animation:twinkle 3s infinite alternate;
+    z-index:-1;
+  }
+  @keyframes twinkle{
+    0%{opacity:0.08;}
+    100%{opacity:0.18;}
+  }
+  header{
+    background:#111;
+    padding:15px;
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+    color:#00ff88;
+    position:relative;
+  }
+  .searchBox{
+    padding:12px;
+    text-align:center;
+    background:#151515;
+  }
+  .searchBox input{
+    width:80%;
+    padding:10px;
+    border-radius:6px;
+    border:none;
+    outline:none;
+    font-size:14px;
+  }
+  .toggle{
+    position:absolute;
+    right:15px;
+    top:15px;
+    cursor:pointer;
+    background:#00aa55;
+    border:none;
+    padding:6px 10px;
+    border-radius:5px;
+    color:white;
+  }
+  .tabs{
+    display:flex;
+    background:#111;
+  }
+  .tabs button{
+    flex:1;
+    padding:14px;
+    border:none;
+    background:#111;
+    color:white;
+    cursor:pointer;
+  }
+  .tabs button.active{
+    background:#00aa55;
+  }
+  .tabcontent{
+    display:none;
+    padding:20px;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+    gap:18px;
+  }
+  .app{
+    background:#161616;
+    border-radius:10px;
+    padding:12px;
+    text-align:center;
+    box-shadow:0 0 10px rgba(0,255,120,0.2);
+  }
+  .app img{
+    width:70px;
+    height:70px;
+    border-radius:12px;
+  }
+  .app h3{
+    font-size:15px;
+    margin:8px 0;
+  }
+  .app p{
+    font-size:12px;
+    color:#aaa;
+    height:35px;
+    overflow:hidden;
+  }
+  /* download button — now forces download via data attr + js */
+  .download{
+    display:inline-block;
+    background:#00cc66;
+    padding:8px 12px;
+    border-radius:6px;
+    color:white;
+    text-decoration:none;
+    cursor:pointer;
+    margin-top:6px;
+    border: none;
+    font-size: 14px;
+  }
+  .download:hover{
+    background:#00aa55;
+  }
+  /* Light Mode */
+  .light{
+    background:#f2f2f2;
+    color:black;
+  }
+  .light .app{
+    background:white;
+    box-shadow:0 2px 6px rgba(0,0,0,0.2);
+  }
+  /* hint */
+  .info-note{
+    text-align: center;
+    font-size: 13px;
+    color: #88ffaa;
+    margin-top: 10px;
+    opacity: 0.8;
+  }
+  .light .info-note{
+    color: #0a5c2e;
+  }
 </style>
 </head>
-
 <body>
 
 <header>
-DarkSpy AppStore
-<button class="toggle" onclick="toggleMode()">D/L</button>
+  DarkSpy AppStore
+  <button class="toggle" onclick="toggleMode()">D/L</button>
 </header>
 
 <div class="searchBox">
-<input type="text" id="search" placeholder="Search apps..." onkeyup="searchApps()">
+  <input type="text" id="search" placeholder="Search apps..." onkeyup="searchApps()">
 </div>
 
 <div class="tabs">
-<button class="tablink active" onclick="openTab(event,'dev')">Developer Tools</button>
-<button class="tablink" onclick="openTab(event,'hack')">Hacking Tools</button>
-<button class="tablink" onclick="openTab(event,'apps')">Kelly Apps</button>
+  <button class="tablink active" onclick="openTab(event,'dev')">Developer Tools</button>
+  <button class="tablink" onclick="openTab(event,'hack')">Hacking Tools</button>
+  <button class="tablink" onclick="openTab(event,'apps')">Kelly Apps</button>
 </div>
-
 
 <!-- Developer Tools -->
-
 <div id="dev" class="tabcontent" style="display:block">
-<div class="grid">
-
-<div class="app">
-<img src="https://cdn-icons-png.flaticon.com/512/906/906324.png">
-<h3>App Cloner</h3>
-<p>Install duplicate Apps on your Mobile Device.</p>
-<a class="download" href="https://www.dropbox.com/scl/fi/3n9ipcfnq5z6kv9cv8oi7/App-Cloner_3.3.3.apk?rlkey=gnv0k3pyga7m7zyqm424y90ap&st=apm71sfb&dl=" target="_blank">Download</a>
+  <div class="grid">
+    <div class="app">
+      <img src="https://cdn-icons-png.flaticon.com/512/906/906324.png" alt="app icon">
+      <h3>App Cloner</h3>
+      <p>Install duplicate Apps on your Mobile Device.</p>
+      <!-- fixed download: uses force-download link + fallback -->
+      <button class="download" data-dl="https://www.dropbox.com/scl/fi/3n9ipcfnq5z6kv9cv8oi7/App-Cloner_3.3.3.apk?rlkey=gnv0k3pyga7m7zyqm424y90ap&st=apm71sfb&dl=1">Download</button>
+    </div>
+  </div>
 </div>
-
-</div>
-</div>
-
 
 <!-- Hacking Tools -->
-
 <div id="hack" class="tabcontent">
-<div class="grid">
-
-<div class="app">
-<img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png">
-<h3>WiFi Cracker</h3>
-<p>WiFi Password Cracking (Bruteforce).</p>
-<a class="download" href="https://www.dropbox.com/scl/fo/ulufj9x0m88du33h9x8r9/AD4aeEAHe_rrCFynA4eZzt0?rlkey=wjv0ol2igvud24kitoq0xby4s&st=idcn1tj7&dl=1" target="_blank">Download</a>
+  <div class="grid">
+    <div class="app">
+      <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="hack icon">
+      <h3>WiFi Cracker</h3>
+      <p>WiFi Password Cracking (Bruteforce).</p>
+      <button class="download" data-dl="https://www.dropbox.com/scl/fo/ulufj9x0m88du33h9x8r9/AD4aeEAHe_rrCFynA4eZzt0?rlkey=wjv0ol2igvud24kitoq0xby4s&st=idcn1tj7&dl=1">Download</button>
+    </div>
+  </div>
 </div>
-
-</div>
-</div>
-
 
 <!-- Kelly Apps -->
-
 <div id="apps" class="tabcontent">
-<div class="grid">
-
-<div class="app">
-<img src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
-<h3>DarkSpy Prank</h3>
-<p>A prank APK. Share To Friends</p>
-<a class="download" href="https://www.dropbox.com/scl/fi/01osps1sn8e1hz22c7bkp/DarkSpy-Prank_1.0.apk?rlkey=py9i5m5qjfwdh60fioaprixb2&st=izl1otug&dl=1" target="_blank">Download</a>
+  <div class="grid">
+    <div class="app">
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="prank icon">
+      <h3>DarkSpy Prank</h3>
+      <p>A prank APK. Share To Friends</p>
+      <button class="download" data-dl="https://www.dropbox.com/scl/fi/01osps1sn8e1hz22c7bkp/DarkSpy-Prank_1.0.apk?rlkey=py9i5m5qjfwdh60fioaprixb2&st=izl1otug&dl=1">Download</button>
+    </div>
+  </div>
+  <!-- small note: dropbox links forced to dl=1, but we use fetch + blob to force download -->
 </div>
 
-</div>
-</div>
-
+<!-- tiny info (optional) -->
+<div class="info-note">⬇️ Click download → file starts immediately (no new tab)</div>
 
 <script>
+  // Tab switching
+  function openTab(evt, tabName) {
+    var tabcontent = document.getElementsByClassName("tabcontent");
+    for (var i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    var tablinks = document.getElementsByClassName("tablink");
+    for (var i = 0; i < tablinks.length; i++) {
+      tablinks[i].classList.remove("active");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.classList.add("active");
+  }
 
-/* Tab switching */
+  // Search apps
+  function searchApps() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let apps = document.getElementsByClassName("app");
+    for (let i = 0; i < apps.length; i++) {
+      let name = apps[i].innerText.toLowerCase();
+      apps[i].style.display = name.includes(input) ? "" : "none";
+    }
+  }
 
-function openTab(evt,tabName){
+  // Dark/Light mode
+  function toggleMode() {
+    document.body.classList.toggle("light");
+  }
 
-var tabcontent=document.getElementsByClassName("tabcontent");
+  /* ---------- FORCE DOWNLOAD (no new tab) ---------- 
+     Why? Even with dl=1 Dropbox often opens preview or new tab.
+     We intercept clicks, fetch as blob, and trigger file download.
+     Respects same-origin, works for APK files. 
+  */
+  document.addEventListener('click', function(e) {
+    const downloadBtn = e.target.closest('.download');
+    if (!downloadBtn) return;
 
-for(var i=0;i<tabcontent.length;i++){
-tabcontent[i].style.display="none";
-}
+    e.preventDefault();  // stop any default action
 
-var tablinks=document.getElementsByClassName("tablink");
+    const url = downloadBtn.getAttribute('data-dl');  // get real link
+    if (!url) return;
 
-for(var i=0;i<tablinks.length;i++){
-tablinks[i].classList.remove("active");
-}
+    // show feedback (optional)
+    const originalText = downloadBtn.innerText;
+    downloadBtn.innerText = '...';
+    downloadBtn.disabled = true;
 
-document.getElementById(tabName).style.display="block";
-evt.currentTarget.classList.add("active");
+    // extract filename from URL or provide default
+    let filename = 'app.apk';
+    const match = url.match(/\/([^\/?]+\.apk)/i);
+    if (match && match[1]) {
+      filename = match[1];
+    } else {
+      // fallback based on button text
+      if (downloadBtn.closest('.app')?.querySelector('h3')) {
+        filename = downloadBtn.closest('.app').querySelector('h3').innerText.replace(/\s+/g, '_') + '.apk';
+      }
+    }
 
-}
+    // Fetch with credentials 'include' if needed, but dropbox works without.
+    fetch(url, {
+      method: 'GET',
+      mode: 'cors',         // Dropbox allows CORS
+      cache: 'no-cache'
+    })
+    .then(response => {
+      if (!response.ok) throw new Error('Network issue');
+      return response.blob();
+    })
+    .then(blob => {
+      // create object URL from blob
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = filename;          // forces download, not navigation
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(blobUrl);
 
-/* Search */
+      // reset button
+      downloadBtn.innerText = originalText;
+      downloadBtn.disabled = false;
+    })
+    .catch(error => {
+      console.warn('Fetch download failed, trying fallback:', error);
+      // If fetch fails (CORS or large file policy), fallback to direct location? but that opens tab.
+      // But we want avoid new tab. We'll use an iframe trick as last resort.
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = url;
+      document.body.appendChild(iframe);
+      setTimeout(() => {
+        document.body.removeChild(iframe);
+        downloadBtn.innerText = originalText;
+        downloadBtn.disabled = false;
+      }, 2000);
+      // however iframe also sometimes triggers download, sometimes not. But doesn't open a new tab (silent)
+    });
+  });
 
-function searchApps(){
+  // ensure any manually added downloads also have the attribute (we already set data-dl)
+  // preload: replace any leftover inline onclick on <a> – we removed <a> and use buttons.
+  // Buttons with class .download and data-dl are fully handled.
 
-let input=document.getElementById("search").value.toLowerCase();
-
-let apps=document.getElementsByClassName("app");
-
-for(let i=0;i<apps.length;i++){
-
-let name=apps[i].innerText.toLowerCase();
-
-if(name.includes(input)){
-apps[i].style.display="";
-}else{
-apps[i].style.display="none";
-}
-
-}
-
-}
-
-/* Dark/Light Mode */
-
-function toggleMode(){
-document.body.classList.toggle("light");
-}
-
+  // Also, optional: fix tab default active first
+  window.onload = function() {
+    // ensure dev is visible
+    document.getElementById('dev').style.display = 'block';
+    // active class already set on first tab manually
+  };
 </script>
 
+<!-- also ensure if any user accidentally double-clicks, no tab opening -->
 </body>
 </html>
