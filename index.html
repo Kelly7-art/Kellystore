@@ -144,11 +144,12 @@ overflow:hidden;
 /* Download button */
 
 .download{
+display:inline-block;
 background:#00cc66;
-border:none;
 padding:8px 12px;
 border-radius:6px;
 color:white;
+text-decoration:none;
 cursor:pointer;
 margin-top:6px;
 }
@@ -199,7 +200,7 @@ DarkSpy AppStore
 <img src="https://cdn-icons-png.flaticon.com/512/906/906324.png">
 <h3>App Cloner</h3>
 <p>Install duplicate Apps on your Mobile Device.</p>
-<button class="download" onclick="https://www.dropbox.com/scl/fi/3n9ipcfnq5z6kv9cv8oi7/App-Cloner_3.3.3.apk?rlkey=gnv0k3pyga7m7zyqm424y90ap&st=apm71sfb&dl=">Download</button>
+<a class="download" href="https://www.dropbox.com/scl/fi/3n9ipcfnq5z6kv9cv8oi7/App-Cloner_3.3.3.apk?rlkey=gnv0k3pyga7m7zyqm424y90ap&st=apm71sfb&dl=" target="_blank">Download</a>
 </div>
 
 </div>
@@ -215,7 +216,7 @@ DarkSpy AppStore
 <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png">
 <h3>WiFi Cracker</h3>
 <p>WiFi Password Cracking (Bruteforce).</p>
-<button class="download" onclick="https://www.dropbox.com/scl/fo/ulufj9x0m88du33h9x8r9/AD4aeEAHe_rrCFynA4eZzt0?rlkey=wjv0ol2igvud24kitoq0xby4s&st=idcn1tj7&dl=1">Download</button>
+<a class="download" href="https://www.dropbox.com/scl/fo/ulufj9x0m88du33h9x8r9/AD4aeEAHe_rrCFynA4eZzt0?rlkey=wjv0ol2igvud24kitoq0xby4s&st=idcn1tj7&dl=1" target="_blank">Download</a>
 </div>
 
 </div>
@@ -231,7 +232,7 @@ DarkSpy AppStore
 <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
 <h3>DarkSpy Prank</h3>
 <p>A prank APK. Share To Friends</p>
-<button class="download" onclick="https://www.dropbox.com/scl/fi/01osps1sn8e1hz22c7bkp/DarkSpy-Prank_1.0.apk?rlkey=py9i5m5qjfwdh60fioaprixb2&st=izl1otug&dl=1">Download</button>
+<a class="download" href="https://www.dropbox.com/scl/fi/01osps1sn8e1hz22c7bkp/DarkSpy-Prank_1.0.apk?rlkey=py9i5m5qjfwdh60fioaprixb2&st=izl1otug&dl=1" target="_blank">Download</a>
 </div>
 
 </div>
@@ -281,12 +282,6 @@ apps[i].style.display="none";
 
 }
 
-}
-
-/* Download */
-
-function download(url){
-window.open(url,"_blank");
 }
 
 /* Dark/Light Mode */
