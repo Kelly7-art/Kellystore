@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kelly AppStore</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0b0f0b;
+color:white;
+overflow-x:hidden;
+}
+
+/* Twinkling hacker background */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:
+radial-gradient(#00ff66 1px, transparent 1px);
+background-size:40px 40px;
+opacity:0.15;
+animation:twinkle 3s infinite alternate;
+z-index:-1;
+}
+
+@keyframes twinkle{
+0%{opacity:0.08;}
+100%{opacity:0.18;}
+}
+
+/* Header */
+
+header{
+background:#111;
+padding:15px;
+text-align:center;
+font-size:22px;
+font-weight:bold;
+color:#00ff88;
+}
+
+/* Search */
+
+.searchBox{
+padding:12px;
+text-align:center;
+background:#151515;
+}
+
+.searchBox input{
+width:80%;
+padding:10px;
+border-radius:6px;
+border:none;
+outline:none;
+font-size:14px;
+}
+
+/* Dark mode toggle */
+
+.toggle{
+position:absolute;
+right:15px;
+top:15px;
+cursor:pointer;
+background:#00aa55;
+border:none;
+padding:6px 10px;
+border-radius:5px;
+color:white;
+}
+
+/* Tabs */
+
+.tabs{
+display:flex;
+background:#111;
+}
+
+.tabs button{
+flex:1;
+padding:14px;
+border:none;
+background:#111;
+color:white;
+cursor:pointer;
+}
+
+.tabs button.active{
+background:#00aa55;
+}
+
+/* Content */
+
+.tabcontent{
+display:none;
+padding:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+gap:18px;
+}
+
+/* App Card */
+
+.app{
+background:#161616;
+border-radius:10px;
+padding:12px;
+text-align:center;
+box-shadow:0 0 10px rgba(0,255,120,0.2);
+}
+
+.app img{
+width:70px;
+height:70px;
+border-radius:12px;
+}
+
+.app h3{
+font-size:15px;
+margin:8px 0;
+}
+
+.app p{
+font-size:12px;
+color:#aaa;
+height:35px;
+overflow:hidden;
+}
+
+/* Download button */
+
+.download{
+background:#00cc66;
+border:none;
+padding:8px 12px;
+border-radius:6px;
+color:white;
+cursor:pointer;
+margin-top:6px;
+}
+
+.download:hover{
+background:#00aa55;
+}
+
+/* Light Mode */
+
+.light{
+background:#f2f2f2;
+color:black;
+}
+
+.light .app{
+background:white;
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+DarkSpy AppStore
+<button class="toggle" onclick="toggleMode()">D/L</button>
+</header>
+
+<div class="searchBox">
+<input type="text" id="search" placeholder="Search apps..." onkeyup="searchApps()">
+</div>
+
+<div class="tabs">
+<button class="tablink active" onclick="openTab(event,'dev')">Developer Tools</button>
+<button class="tablink" onclick="openTab(event,'hack')">Hacking Tools</button>
+<button class="tablink" onclick="openTab(event,'apps')">Kelly Apps</button>
+</div>
+
+
+<!-- Developer Tools -->
+
+<div id="dev" class="tabcontent" style="display:block">
+<div class="grid">
+
+<div class="app">
+<img src="https://cdn-icons-png.flaticon.com/512/906/906324.png">
+<h3>App Cloner</h3>
+<p>Install duplicate Apps on your Mobile Device.</p>
+<button class="download" onclick="download('https://www.dropbox.com/scl/fi/3n9ipcfnq5z6kv9cv8oi7/App-Cloner_3.3.3.apk?rlkey=gnv0k3pyga7m7zyqm424y90ap&st=apm71sfb&dl=1')">Download</button>
+</div>
+
+</div>
+</div>
+
+
+<!-- Hacking Tools -->
+
+<div id="hack" class="tabcontent">
+<div class="grid">
+
+<div class="app">
+<img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png">
+<h3>WiFi Cracker</h3>
+<p>WiFi Password Cracking (Bruteforce).</p>
+<button class="download" onclick="download('https://www.dropbox.com/scl/fo/ulufj9x0m88du33h9x8r9/AD4aeEAHe_rrCFynA4eZzt0?rlkey=wjv0ol2igvud24kitoq0xby4s&st=idcn1tj7&dl=1')https://pixeldrain.com/u/PU8EraiK">Download</button>
+</div>
+
+</div>
+</div>
+
+
+<!-- Kelly Apps -->
+
+<div id="apps" class="tabcontent">
+<div class="grid">
+
+<div class="app">
+<img src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
+<h3>DarkSpy Prank</h3>
+<p>A prank APK. Share To Friends</p>
+<button class="download" onclick="download('https://www.dropbox.com/scl/fi/01osps1sn8e1hz22c7bkp/DarkSpy-Prank_1.0.apk?rlkey=py9i5m5qjfwdh60fioaprixb2&st=izl1otug&dl=1')">Download</button>
+</div>
+
+</div>
+</div>
+
+
+<script>
+
+/* Tab switching */
+
+function openTab(evt,tabName){
+
+var tabcontent=document.getElementsByClassName("tabcontent");
+
+for(var i=0;i<tabcontent.length;i++){
+tabcontent[i].style.display="none";
+}
+
+var tablinks=document.getElementsByClassName("tablink");
+
+for(var i=0;i<tablinks.length;i++){
+tablinks[i].classList.remove("active");
+}
+
+document.getElementById(tabName).style.display="block";
+evt.currentTarget.classList.add("active");
+
+}
+
+/* Search */
+
+function searchApps(){
+
+let input=document.getElementById("search").value.toLowerCase();
+
+let apps=document.getElementsByClassName("app");
+
+for(let i=0;i<apps.length;i++){
+
+let name=apps[i].innerText.toLowerCase();
+
+if(name.includes(input)){
+apps[i].style.display="";
+}else{
+apps[i].style.display="none";
+}
+
+}
+
+}
+
+/* Download */
+
+function download(url){
+window.open(url,"_blank");
+}
+
+/* Dark/Light Mode */
+
+function toggleMode(){
+document.body.classList.toggle("light");
+}
+
+</script>
+
+</body>
+</html>
